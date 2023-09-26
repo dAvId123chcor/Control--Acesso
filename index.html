@@ -34,7 +34,23 @@
           <img src="Img/Xpocet.png" alt="Imagen 3" style="width: 300px">
       </a>
     </div> -->
-
-    <script src="Main.js"></script>
+        <script>
+  document.getElementById("abrirCerradura").addEventListener("click", function() {
+    // Realizar una solicitud POST al ESP32
+    fetch("/control_cerradura", {
+      method: "POST"
+    })
+    .then(response => {
+      if (response.ok) {
+        console.log("Cerradura abierta con éxito.");
+      } else {
+        console.error("Error al abrir la cerradura.");
+      }
+    })
+    .catch(error => {
+      console.error("Error en la solicitud: " + error);
+    });
+  });
+</script>
 </body>
 </html>
